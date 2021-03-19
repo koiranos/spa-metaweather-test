@@ -1,0 +1,8 @@
+#location-title:hover {
+  cursor: pointer;
+  border-color: rgb(168, 51, 153) !important;
+}
+
+#location-title:hover > h3 {
+  color: rgb(168, 51, 153);
+}
