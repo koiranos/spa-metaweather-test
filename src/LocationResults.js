@@ -17,11 +17,7 @@ const LocationResults = ({ term, result }) => {
     return data;
   };
 
-  return result != undefined ? (
-    getLocations()
-  ) : (
-    <p>Gathering Data Please wait..</p>
-  );
+  return result != null ? getLocations() : <p>Gathering Data Please wait..</p>;
 };
 
 export default LocationResults;

@@ -6,3 +6,92 @@
 #location-title:hover > h3 {
   color: rgb(168, 51, 153);
 }
+
+.modal-subtitle {
+  font-size: medium;
+}
+
+.weather-info-title {
+  font-weight: 600;
+  text-decoration: underline;
+  margin: 0 !important;
+  margin-top: 10% !important;
+}
+
+.prediction {
+  border-top: 1px solid #17a2b8;
+  border-bottom: 1px solid #17a2b8;
+}
+
+.n {
+  transform: rotate(180deg);
+}
+.e {
+  transform: rotate(-90deg);
+}
+.s {
+  transform: rotate(0deg);
+}
+.w {
+  transform: rotate(90deg);
+}
+
+.se {
+  transform: rotate(-45deg);
+}
+.sw {
+  transform: rotate(45deg);
+}
+
+.ne {
+  transform: rotate(-135deg);
+}
+.nw {
+  transform: rotate(135deg);
+}
+
+.sse {
+  transform: rotate(-22.5deg);
+}
+.ssw {
+  transform: rotate(22.5deg);
+}
+
+.ese {
+  transform: rotate(67.5deg);
+}
+.wsw {
+  transform: rotate(-67.5deg);
+}
+
+.ene {
+  transform: rotate(-112.5deg);
+}
+.wnw {
+  transform: rotate(112.5deg);
+}
+
+.nne {
+  transform: rotate(-157.5deg);
+}
+.nnw {
+  transform: rotate(157.5deg);
+}
+
+.weather-content {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+  .weather-content {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+.min-max {
+  display: block;
+}

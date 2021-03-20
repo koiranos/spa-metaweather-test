@@ -9,14 +9,17 @@ import axios from "axios";
 
 const App = () => {
   const [searchedTerm, setSearchedTerm] = useState("London");
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState(null);
 
-  useEffect(async () => {
-    const res = await axios.get(
-      "https://cors-everywhere.herokuapp.com/https://www.metaweather.com/api/location/search/",
-      { params: { query: searchedTerm } }
-    );
-    setSearchResult(res.data);
+  useEffect(() => {
+    async function getSearchResults() {
+      const res = await axios.get(
+        "https://cors-everywhere.herokuapp.com/https://www.metaweather.com/api/location/search/",
+        { params: { query: searchedTerm } }
+      );
+      setSearchResult(res.data);
+    }
+    getSearchResults();
   }, [searchedTerm]);
 
   return (

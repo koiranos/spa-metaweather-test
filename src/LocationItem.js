@@ -1,11 +1,28 @@
 import React, { useState } from "react";
 import WeatherModal from "./WeatherModal";
+import axios from "axios";
 
-const LocationItem = ({ title, lattLong }) => {
+const LocationItem = ({ title, lattLong, woeid }) => {
+  const [weatherData, setWeatherData] = useState(null);
   const [modalVisibility, setModalVisibility] = useState(false);
+
+  const getWeatherData = async () => {
+    const res = await axios.get(
+      `https://cors-everywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`
+    );
+
+    setWeatherData(res.data.consolidated_weather);
+  };
+
   return (
     <div
-      onClick={() => setModalVisibility(!modalVisibility)}
+      onClick={() => {
+        if (!modalVisibility) {
+          setModalVisibility(true);
+          setWeatherData(null);
+          getWeatherData();
+        }
+      }}
       className="col-md-3 border"
       id="location-title"
     >
@@ -29,6 +46,7 @@ const LocationItem = ({ title, lattLong }) => {
         isModalVisible={modalVisibility}
         isClosing={() => setModalVisibility(false)}
         title={title}
+        weather={weatherData}
       />
     </div>
   );
