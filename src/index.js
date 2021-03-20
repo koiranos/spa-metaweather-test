@@ -1,13 +1,23 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./index.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
 import LocationResults from "./LocationResults";
 import SearchBar from "./SearchBar";
+import axios from "axios";
 
 const App = () => {
   const [searchedTerm, setSearchedTerm] = useState("London");
+  const [searchResult, setSearchResult] = useState([]);
+
+  useEffect(async () => {
+    const res = await axios.get(
+      "https://cors-everywhere.herokuapp.com/https://www.metaweather.com/api/location/search/",
+      { params: { query: searchedTerm } }
+    );
+    setSearchResult(res.data);
+  }, [searchedTerm]);
 
   return (
     <div className="container">
@@ -22,7 +32,7 @@ const App = () => {
         </div>
       </div>
       <div className="row">
-        <LocationResults term={searchedTerm} />
+        <LocationResults term={searchedTerm} result={searchResult} />
       </div>
     </div>
   );
