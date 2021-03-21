@@ -19,7 +19,18 @@ const App = () => {
       );
       setSearchResult(res.data);
     }
-    getSearchResults();
+
+    if (searchedTerm && searchResult == null) {
+      getSearchResults();
+    } else {
+      const timeoutid = setTimeout(() => {
+        getSearchResults();
+      }, 800);
+
+      return () => {
+        clearTimeout(timeoutid);
+      };
+    }
   }, [searchedTerm]);
 
   return (
