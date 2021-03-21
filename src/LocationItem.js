@@ -6,6 +6,7 @@ const LocationItem = ({ title, lattLong, woeid }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [modalVisibility, setModalVisibility] = useState(false);
 
+  // perform a get request with axios
   const getWeatherData = async () => {
     const res = await axios.get(
       `https://cors-everywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}`

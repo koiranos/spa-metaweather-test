@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import ModalBody from "./ModalBody";
 
 const WeatherModal = ({ isModalVisible, isClosing, title, weather }) => {
+  // display the correct date format
   const getDate = (date) => {
     const tempDate = new Date(date);
     const days = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"];
@@ -10,6 +11,7 @@ const WeatherModal = ({ isModalVisible, isClosing, title, weather }) => {
   };
 
   const getModalContent = () => {
+    // create Modal content dynamically
     const weatherData = weather.map((day) => {
       return (
         <ModalBody
@@ -51,11 +53,6 @@ const WeatherModal = ({ isModalVisible, isClosing, title, weather }) => {
         ) : (
           <div className="row">{getModalContent()}</div>
         )}
-        {/* {weather != null ? (
-          <div className="row">{getModalContent()}</div>
-        ) : (
-          "Gathering Weather Information..."
-        )} */}
       </Modal.Body>
     </Modal>
   );

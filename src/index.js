@@ -8,10 +8,13 @@ import SearchBar from "./SearchBar";
 import axios from "axios";
 
 const App = () => {
+  // initialize searchBar properties
   const [searchedTerm, setSearchedTerm] = useState("London");
   const [searchResult, setSearchResult] = useState(null);
 
+  // get results from searchTerm
   useEffect(() => {
+    // perform a get request with axios
     async function getSearchResults() {
       const res = await axios.get(
         "https://cors-everywhere.herokuapp.com/https://www.metaweather.com/api/location/search/",
@@ -20,6 +23,7 @@ const App = () => {
       setSearchResult(res.data);
     }
 
+    // handle request callback
     if (searchedTerm && searchResult == null) {
       getSearchResults();
     } else {
